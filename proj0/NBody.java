@@ -16,7 +16,7 @@ public class NBody {
 		printUniverse(radius, planets);
 	}
 
-	public static void animateUniverse(double dt, Planet[] planets){
+	private static void animateUniverse(double dt, Planet[] planets){
 		int planetCount = planets.length;
 		double[] xForces = new double[planetCount];
 		double[] yForces = new double[planetCount];
