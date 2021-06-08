@@ -92,5 +92,10 @@ public class Planet {
 		this.yyPos = this.yyPos + (dt * yyVel);
 	}
 
+	public void draw(){
+		String img_to_draw = "images/" + imgFileName;
+		StdDraw.picture(xxPos, yyPos, img_to_draw);
+	}
+
 
 }
