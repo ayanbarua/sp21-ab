@@ -68,20 +68,29 @@ public class Planet {
 	}
 
 	public double calcNetForceExertedByY(Planet[] allPlanets){
-		double sumX = 0;
-		
-		for (Planet p : allPlanets){
+		double sumY = 0;
+
+		for(Planet p : allPlanets){
 			if (this.equals(p)){
 				continue;
 			} else{
-				sumX += this.calcForceExertedByY(p);
+				sumY += this.calcForceExertedByY(p);
 			}
 		}
 
-		return sumX;
+		return sumY;
 	}
 
+	public void update(double dt, double fX, double fY){
+		double xxAcc = fX / this.mass;
+		double yyAcc = fY / this.mass;
 
+		this.xxVel = this.xxVel + (dt * xxAcc);
+		this.yyVel = this.yyVel + (dt * yyAcc);
+
+		this.xxPos = this.xxPos + (dt * xxVel);
+		this.yyPos = this.yyPos + (dt * yyVel);
+	}
 
 
 }
