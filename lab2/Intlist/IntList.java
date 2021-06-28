@@ -99,35 +99,6 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-//        if (A == null){
-//            return B;
-//        }
-//
-//        IntList res = new IntList(A.first, null);
-//        IntList concat = res;
-//        A = A.rest;
-//
-//        while (A != null){
-//            concat.rest = new IntList(A.first, null);
-//            A = A.rest;
-//            concat = concat.rest;
-//        }
-//
-//        if (B == null){
-//            return concat;
-//        }
-//
-//        concat.rest = new IntList(B.first, null);
-//        concat = concat.rest;
-//        B = B.rest;
-//
-//        while (B != null) {
-//            concat.rest = new IntList(B.first, null);
-//            B = B.rest;
-//            concat = concat.rest;
-//        }
-//        return res;
-//    }
         if (A == null){
             if (B == null){
                 return null;
@@ -135,27 +106,30 @@ public class IntList {
             return B;
         }
 
-        IntList newList = new IntList(A.first, null);
-        IntList p = newList;
+        IntList res = new IntList(A.first, null);
+        IntList concat = res;
+        A = A.rest;
 
-        while(A.rest != null){
+        while (A != null){
+            concat.rest = new IntList(A.first, null);
             A = A.rest;
-            newList.rest = new IntList(A.first,null);
-            newList = newList.rest;
+            concat = concat.rest;
         }
 
         if (B == null){
-            return p;
-        }
-        newList.rest = new IntList(B.first, null);
-        newList = newList.rest;
-        while (B.rest != null){
-            B = B.rest;
-            newList.rest = new IntList(B.first, null);
-            newList = newList.rest;
+            return concat;
         }
 
-        return p;
+        concat.rest = new IntList(B.first, null);
+        concat = concat.rest;
+        B = B.rest;
+
+        while (B != null) {
+            concat.rest = new IntList(B.first, null);
+            B = B.rest;
+            concat = concat.rest;
+        }
+        return res;
     }
 
 
